@@ -33,6 +33,14 @@ def main():
             rect = text.get_rect(center=(start_x + i * option_spacing, base_y))
             screen.blit(text, rect)
 
+    def draw_hint_text():
+        """ヒントテキストを画面に表示する関数"""
+        hint_text = "please speacekey"
+        hint_surface = font.render(hint_text, True, (255, 255, 255))
+        hint_rect = hint_surface.get_rect(center=(400, 50))
+        screen.blit(hint_surface, hint_rect)
+
+
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT:
@@ -77,6 +85,8 @@ def main():
         # メニューがアクティブならメニューを描画
         if menu_active:
             draw_menu()
+        else:
+            draw_hint_text()
 
         # 画面を更新
         pg.display.update()
